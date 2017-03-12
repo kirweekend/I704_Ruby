@@ -1,0 +1,34 @@
+(*)
+/.bundle
+/vendor
+/lib*/Gosu*.lib
+/lib*/?.?
+/pkg/
+/reference/cpp/
+/reference/rdoc/
+/website/downloads/
+/website/cpp/
+/website/index.html
+/website/mwf
+/website/potd*
+/website/rdoc/
+/website/RubyGosu.tmbundle.zip
+
+.yardoc/
+
+# QtCreator project files
+Gosu.config
+Gosu.creator
+Gosu.files
+Gosu.includes
+
+/cmake/build/*
+/examples/build/*
+/examples/*Example
+
+# Files from Mac builds & CocoaPod installs
+/**/*.xcworkspace
+/**/xcuserdata
+/**/Pods
+/**/Podfile.lock
+/**/*.app
