@@ -1,22 +1,27 @@
-require_relative 'movement'
 module Game
   class Bullet
-    SPEED = 5
+    SPEED = 12
     attr_reader :x, :y, :radius
 
-    def initialize(window, x, y, direction)
+    def initialize(window, x, y, angle)
+      @x         = x
+      @y         = y
+      @direction = angle
       @image     = Gosu::Image.new('assets/bl.png')
-      @window    = window
-      @radius    = 12.8
-      @Movement = Movement.new(x,y,direction,SPEED)
+      @window     = window
+      @radius = [30, 30].max / 2
+
+      @x += Gosu.offset_x(@direction, SPEED * 5)
+      @y += Gosu.offset_y(@direction, SPEED * 5)
     end
 
     def draw
-      @image.draw(@Movement.x - @radius, @Movement.y - @radius, 1)
+      @image.draw(@x - @radius, @y - @radius, 1)
     end
 
     def move
-      @Movement.move
+      @x += Gosu.offset_x(@direction, SPEED)
+      @y += Gosu.offset_y(@direction, SPEED)
     end
 
     def onscreen?
@@ -24,7 +29,7 @@ module Game
       left = -@radius
       top = -@radius
       bottom = @window.height + @radius
-      @Movement.x > left && @Movement.x < right && @Movement.y > top && @Movement.y < bottom
+      @x > left && @x < right && @y > top && y < bottom
     end
   end
 end

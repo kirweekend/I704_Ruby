@@ -1,7 +1,7 @@
 module Game
   class Player
     attr_reader :x, :y, :radius, :angle
-    ROTATION = 5
+    ROTATION = 6
     ACCELERATION = 1
     FRICTION = 0.9
 
@@ -9,7 +9,7 @@ module Game
       @image = Gosu::Image.new("assets/rock.png")
       @x = @y = @vel_x = @vel_y = @angle = 0.0
       @score = 0
-      @radius = 50
+      @radius = [128, 128].max / 2
       @window = window
     end
 
@@ -58,7 +58,7 @@ module Game
     end
 
     def draw
-      @image.draw_rot(@x, @y, 1, @angle)
+      @image.draw_rot(@x, @y, 2, @angle)
     end
   end
 end
